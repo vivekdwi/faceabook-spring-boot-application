@@ -24,6 +24,8 @@
 		<!--<start-class>com.faceabook.FaceabookApplication</start-class>-->
 		<java.version>1.8</java.version>
 		<rp.build.warname>faceabook</rp.build.warname>
+		<war-target-path>D:\\Vivek\\Learnings\\apache-tomcat-8.5.20\\webapps</war-target-path>
+		<swagger-version>2.6.1</swagger-version>
 	</properties>
 
 	<dependencies>
@@ -33,15 +35,31 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-cassandra</artifactId>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- Swagger Dependency -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger-version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Swagger UI Dependency -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger-version}</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 
@@ -51,6 +69,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<warName>${rp.build.warname}</warName>
+					<outputDirectory>${war-target-path}</outputDirectory>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
